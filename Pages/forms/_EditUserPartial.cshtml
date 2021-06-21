@@ -1,0 +1,97 @@
+@model CVForm.Models.EditUserBase
+
+@{
+
+    bool? [] GendersList = {true, false, null};
+    
+}
+<div class="form-group">
+    <label asp-for="FirstName" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="LastName" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Phone" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Birthdate" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Birthdate" class="form-control" />
+        <span asp-validation-for="Birthdate" class="text-danger"></span>
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Gender" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Gender" value="@GendersList[0] " type="radio" />
+        <label asp-for="@GendersList[0]">Male</label>
+        <br />
+        <input asp-for="Gender" value="@GendersList[1] " type="radio" />
+        <label asp-for="@GendersList[1]">Female</label>
+        <br />
+        <input asp-for="Gender" value="@GendersList[2] " type="radio" />
+        <label asp-for="@GendersList[2]">Not Specified</label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Email" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="CEmail" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="CEmail" class="form-control" />
+        <span asp-validation-for="CEmail" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="Password" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="col-md-6">  
+    <div class="form-group">  
+        <label asp-for="ProfileImage" class="control-label"></label>  
+        <div class="custom-file">  
+            <input asp-for="ProfileImage" class="custom-file-input" id="customFile" type="file">  
+            <label class="custom-file-label" for="customFile">Choose Image</label>  
+        </div>  
+        <span asp-validation-for="ProfileImage" class="text-danger"></span>  
+    </div>  
+</div>  
+
+                
+@section scripts{  
+    <script type="text/javascript">  
+        // Add the following code if you want the name of the file appear on select  
+        $(".custom-file-input").on("change", function () {  
+            var fileName = $(this).val().split("\\").pop();  
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);  
+        });  
+    </script>  
+} 
