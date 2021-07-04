@@ -33,7 +33,7 @@ namespace CVForm
             var connString = Configuration
                              .GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(
-                                        options => options.UseSqlServer(connString));
+                                        options => options.UseSqlServer("Server=.;Database=cv_database;Trusted_Connection=True;MultipleActiveResultSets=true;"));
             services.AddRazorPages();
             _ = services.AddDatabaseDeveloperPageExceptionFilter();
         }

@@ -19,8 +19,8 @@ namespace CVForm.Pages.forms
         private readonly SkillService _skillService;
         private readonly NationalityService _nationalityService;
         [BindProperty] public IList<SelectListItem> SkillList { get; set; }
-        [BindProperty] public IList<SelectListItem> NationalityList { get; set; }
-        
+        [BindProperty] public ICollection<SelectListItem> NationalityList { get; set; }
+        [BindProperty] public IEnumerable<string> NationalityE_List { get; set; } = new List<string>();
         public Create(UserService service, SkillService skillService, NationalityService nationalityService)
         {
             _service = service;
@@ -62,20 +62,15 @@ namespace CVForm.Pages.forms
                             Input.Skills.Add(temp);
                         }
                     }
-                    foreach (SelectListItem nationality in NationalityList)
+                    
+                    foreach (string N in NationalityE_List)
                     {
-                        if (nationality.Selected)
-                        {
-                            var temp = new CreateNationalityCommand
+                        var temp = new CreateNationalityCommand()
                             {
-                                Id = Convert.ToInt32(nationality.Value),
-                                NationalityName = nationality.Text
+                                Id = Convert.ToInt32(N),
+                                NationalityName = _nationalityService.GetNationalityName(Convert.ToInt32(N))
                             };
                             Input.Nationalities.Add(temp);
-                            // Input.Skills[i].Id = Convert.ToInt32(skill.Value);
-                            // Input.Skills[i].SkillName = skill.Text;
-                            // i++;
-                        }
                     }
                     var id = await _service.CreateUser(Input);
                     return RedirectToPage("ViewCV", new {id = id});

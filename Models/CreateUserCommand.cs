@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace CVForm.Models
 {
-    public class CreateUserCommand : EditUserBase
+    public class CreateUserCommand : CreateUserBase
     {
         public IList<CreateSkillCommand> Skills { get; set; } = new List<CreateSkillCommand>();
         public IList<CreateNationalityCommand> Nationalities { get; set; } = new List<CreateNationalityCommand>();

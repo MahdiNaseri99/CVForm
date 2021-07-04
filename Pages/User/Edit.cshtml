@@ -1,0 +1,25 @@
+@page
+@model CVForm.Pages.User.EditModel
+
+@{
+    ViewData["Title"] = "Edit Recipe";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<form method="post" class="form-horizontal">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <partial name="_EditUserPartial" model="Model.Input" />
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button asp-route-Password="@Model.OldPassword" type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

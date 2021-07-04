@@ -38,7 +38,7 @@ namespace CVForm.DataBase
         [Required]
         public string Phone { get; set; }
         
-        [Column(TypeName = "longblob")]
+        [Column(TypeName = "Binary")]
         [Required]
         public byte[] Image { get; set; }
         

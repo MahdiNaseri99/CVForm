@@ -14,7 +14,9 @@ namespace CVForm.DataBase
         public DbSet <User> Users { get; set; }
         public DbSet <Skill> Skills { get; set; }
         public DbSet <Nationality> Nationalities { get; set; }
-        
+      
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>().HasData(

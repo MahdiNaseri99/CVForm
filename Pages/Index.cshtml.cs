@@ -27,5 +27,18 @@ namespace CVForm.Pages
             Users = await _service.GetUsers();
 
         }
+        
+        public async Task<ActionResult> OnGetDelete (int id)
+        {
+            await _service.DeleteUser (id);
+            return RedirectToAction("OnGet()");
+        }
+        
+        public FileContentResult GetUserImage(byte[] bytesIn)
+        {
+            if (bytesIn != null)
+                return File(bytesIn, "image/png");
+            return null;
+        }
     }
 }

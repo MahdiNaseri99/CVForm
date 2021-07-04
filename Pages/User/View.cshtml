@@ -1,0 +1,56 @@
+@page
+@using Microsoft.AspNetCore.Http
+@model CVForm.Pages.forms.ViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.user.FirstName @Model.user.LastName</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="data:image/png;base64,@(Html.Raw(Convert.ToBase64String(Model.user.Photo)))" asp-append-version="true" />
+
+                @{
+                    string temp = "Not Specified";
+                    if (Model.user.Sex == true) 
+                        temp = "Male";
+                    else 
+                        if (Model.user.Sex == false) 
+                            temp = "Female";
+                }
+                <h4>User ID : @Model.user.Id</h4>
+                <h4>BirthDate: @Model.user.BirthDate</h4>
+                <h4>Nationality: </h4>
+                                    <dl>
+                                        @foreach (var nationality in Model.user.Nationalities)
+                                        {
+                                            <dd><h5>@nationality.NationalityName</h5></dd>
+                                        }
+                                    </dl>
+                <h4>Phone : @Model.user.Phone</h4>
+                <h4>Email : @Model.user.Email</h4>
+                <h4>Gender : @temp</h4>
+                <h4>Skills: </h4>
+                    <dl>
+                        @foreach (var skill in Model.user.Skills)
+                        {
+                            <dd><h5>@skill.SkillName</h5></dd>
+                        }
+                    </dl>
+
+            </div>
+            <div class="card-footer text-center">
+                <a asp-page="/Index"
+                   class="btn btn-primary">Back</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

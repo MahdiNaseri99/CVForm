@@ -27,5 +27,13 @@ namespace CVForm.Services
                 })
                 .ToList<SelectListItem>();
         }
+
+        public string GetNationalityName(int id)
+        {
+            return _context.Nationalities
+                .Where(x => x.Id == id)
+                .Select(x => x.NationalityName)
+                .SingleOrDefault();
+        }
     }
 }

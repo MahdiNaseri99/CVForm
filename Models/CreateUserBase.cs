@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace CVForm.Models
 {
-    public class EditUserBase
+    public class CreateUserBase
     {
         [Required(ErrorMessage ="Please Enter First Name."),
          StringLength(100)]
@@ -48,5 +48,39 @@ namespace CVForm.Models
         [Required(ErrorMessage = "Please choose profile image")]  
         [Display(Name = "Profile Picture")]  
         public IFormFile ProfileImage { get; set; } 
+    }
+
+    public class EditUserBase
+    {
+        [Required(ErrorMessage = "Please Enter Your Email.")]
+        [EmailAddress]
+        public string Email { get; set; }
+        
+        [Required(ErrorMessage = "Please Confirm Your Email.")]
+        [EmailAddress]
+        [Display(Name = "Confirm Email")]
+        [Compare("Email")]
+        public string CEmail { get; set; }
+        
+        [Required(ErrorMessage = "Please Type The Old Password.")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Old Password")]
+        [StringLength(16,
+            ErrorMessage =
+                "Maximum length is {1}, Minimum length is 8, should contain Digits, Letters, and Symbols")]
+        public string OldPassword { get; set; }
+        
+        [Required(ErrorMessage = "Please Type The New Password.")]
+        [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
+        [StringLength(16,
+            ErrorMessage =
+                "Maximum length is {1}, Minimum length is 8, should contain Digits, Letters, and Symbols")]
+        public string NewPassword { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a Phone Number")]
+        [Phone(ErrorMessage = "Not a valid phone number.")]
+        [Display(Name = "Phone number")]
+        public string Phone { get; set; }
     }
 }

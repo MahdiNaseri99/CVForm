@@ -136,7 +136,7 @@ namespace CVForm.Migrations
 
                     b.Property<byte[]>("Image")
                         .IsRequired()
-                        .HasColumnType("longblob");
+                        .HasColumnType("Binary");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

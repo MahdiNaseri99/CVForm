@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CVForm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210621204916_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210623135507_InitialSchema")]
+    partial class InitialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -138,7 +138,7 @@ namespace CVForm.Migrations
 
                     b.Property<byte[]>("Image")
                         .IsRequired()
-                        .HasColumnType("longblob");
+                        .HasColumnType("Binary");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
